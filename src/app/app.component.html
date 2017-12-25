@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-12">
+  <form  #portal="ngForm"> 
+      <div class="form-group">
+         <label for="id">ID</label>
+         <input type="text" [(ngModel)]="user.id" ngModel name='id' class="form-control" id="id" placeholder="ID" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="user.name" ngModel name='name' class="form-control" id="name" placeholder="Name" required>
+      </div>
+  <div class="form-group">
+  <label for="balance">Balance</label>
+  <input type="text" [(ngModel)]="user.balance"  name='balance' ngModel class="form-control" id="balance" placeholder="Balance" required>
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="text" [(ngModel)]="user.age"  name='age' NgModel class="form-control" id="age" placeholder="Age" required>
+  </div>
+  <button   (click) = addPerson(portal) class="btn btn-success" *ngIf="removePerson">Add Person</button>
+  <button   (click) = updatePerson(portal) class="btn btn-success" *ngIf="updatePersonDetails">Update Person</button>
+  
+  </form>
+  </div>
+  </div>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Balance</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let person of personData;let i = index">
+              <td>{{i}}{{person.id}}</td>
+              <td>{{person.name}}</td>
+              <td>{{person.balance}}</td>
+              <td>{{person.age}}</td>
+              <td (click) = editPerson(person)>Edit</td>
+              <td (click) = deletePerson(i)>Delete</td>
+          </tr>
+      </tbody>
+    </table>
+</div>
